@@ -1,4 +1,5 @@
 const express = require('express');
+
 const {
   listContacts,
   getContactById,
@@ -8,9 +9,11 @@ const {
 } = require('../../models/contacts');
 const { contactValidator } = require('../../utils/validators/validator');
 
+
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
+
   const contacts = await listContacts();
   console.log('GET /', contacts);
   res.status(200).json(contacts);
