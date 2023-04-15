@@ -5,7 +5,7 @@ const contactSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, 'Set name contact'],
+      required: [true, 'Set name for contact'],
     },
     email: {
       type: String,
@@ -18,7 +18,9 @@ const contactSchema = new Schema(
       default: false,
     },
   },
-  { versonKey: false, timestamp: true }
+  { versionKey: false, timestamp: true }
 );
+
 const Contact = mongoose.model('Contact', contactSchema, 'contacts');
+
 module.exports = Contact;
