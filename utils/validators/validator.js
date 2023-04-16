@@ -5,7 +5,6 @@ const contactSchema = joi.object({
   email: joi.string().email(),
   phone: joi.string().min(5),
   favorite: joi.boolean(),
-
 });
 
 const validator = (schema) => (body) => {
@@ -15,4 +14,3 @@ const validator = (schema) => (body) => {
 const contactValidator = validator(contactSchema);
 
 module.exports = { contactValidator };
-
