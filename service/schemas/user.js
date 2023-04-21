@@ -22,7 +22,6 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
-
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
@@ -39,7 +38,7 @@ userSchema.methods.validPassword = function (password) {
   return bCrypt.compareSync(password, this.password);
 };
 
-userSchema.methods.setToken = function (password) {
+userSchema.methods.setToken = function (token) {
   this.token = token;
 };
 
