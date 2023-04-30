@@ -4,7 +4,7 @@ const User = require('../service/schemas/user');
 require('dotenv').config();
 const secret = process.env.SECRET;
 
-const ExtractJWT = passportJWT.ExtractJWT;
+const ExtractJWT = passportJWT.ExtractJwt;
 const Strategy = passportJWT.Strategy;
 const params = {
   secretOrKey: secret,
@@ -24,14 +24,14 @@ passport.use(
   })
 );
 
-const auth = (req, res, next) => {
+const authorizeUser = (req, res, next) => {
   passport.authenticate('jwt', { session: false }, (error, user) => {
     if (!user || error) {
       return res.status(401).json({
         status: 'error',
         code: 401,
-        message: 'Unathorized',
-        data: 'Unathorized',
+        message: 'Unauthorized',
+        data: 'Unauthorized',
       });
     }
     req.user = user;
@@ -39,4 +39,4 @@ const auth = (req, res, next) => {
   })(req, res, next);
 };
 
-module.exports = { auth };
+module.exports = { authorizeUser };
