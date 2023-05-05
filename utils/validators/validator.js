@@ -16,7 +16,9 @@ const contactValidator = validator(contactSchema);
 const userSchema = joi.object({
   email: joi.string().email(),
   password: joi.string(),
+  subscription: joi.string().valid('starter', 'pro', 'business'),
 });
 
 const userValidator = validator(userSchema);
+
 module.exports = { contactValidator, userValidator };
