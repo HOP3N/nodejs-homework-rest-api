@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 const bCrypt = require('bcryptjs');
 
 const userSchema = new Schema(
+
 	{
 		password: {
 			type: String,
@@ -39,7 +40,7 @@ const userSchema = new Schema(
 			required: [true, 'Verify token is required'],
 		},
 	},
-	{ versionKey: false, timestamp: true }
+	{ versionKey: false, timestamp: true }  
 );
 
 userSchema.methods.setPassword = function (password) {

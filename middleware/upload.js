@@ -57,3 +57,4 @@ const uploadMiddleware = multer({
 });
 
 module.exports = { storage, uploadDir, imageStore, createFolderIfNotExist, uploadMiddleware };
+

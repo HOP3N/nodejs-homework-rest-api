@@ -1,6 +1,8 @@
+
 const { nanoid } = require('nanoid/non-secure');
 const { userValidator } = require('./../utils/validators/validator');
 const sgMail = require('../utils/email/sgMail');
+
 const service = require('../service/users');
 const jwt = require('jsonwebtoken');
 const User = require('../service/schemas/user');
@@ -17,6 +19,7 @@ const register = async (req, res, next) => {
   if (error) return res.status(400).json({ message: error.details[0].message });
   const { email, password, subscription } = req.body;
   const user = await service.getUser({ email });
+
   if (user) {
     return res.status(409).json({
       status: 'error',
@@ -39,7 +42,10 @@ const register = async (req, res, next) => {
       subscription,
       avatarURL,
       verificationToken,
+
     });
+
+    const newUser = new User({ email, password, subscription, avatarURL });
     newUser.setPassword(password);
     await newUser.save();
     if (verificationToken) {
@@ -289,4 +295,5 @@ module.exports = {
   deleteUserByMail,
   verifyUserByToken,
   resendVerificationMail,
+
 };

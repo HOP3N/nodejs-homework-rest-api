@@ -1,5 +1,6 @@
 const User = require('./schemas/user');
 
+
 const getUser = async body => User.findOne(body);
 
 const updateUserSubscription = async (userId, subscription) => {
@@ -17,3 +18,4 @@ const updateUserVerification = async userId => {
 };
 
 module.exports = { getUser, updateUserSubscription, updateUserAvatar, deleteUser, updateUserVerification };
+
